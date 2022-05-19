@@ -1,0 +1,61 @@
+1- Nome do Projeto:
+
+Migração de ambiente On-Premises to Cloud
+
+
+2-	Proprietário do Projeto: 
+
+Rescia SA
+
+
+3-	Propósito (qual a intenção deste projeto? Porque estamos fazendo esse projeto? O que nosso cliente deseja, esse projeto vale a pena porque ansiamos chegar a…..)
+
+A 'Rescia SA', dentro de sua cartela de clientes e prospecções realizadas nos mais diversos segmentos, tem sido solicitada em cenários cujo ambiente On-Premises (Datacenter / Computer Room / Escritório) pretende ser migrado para ambiente em nuvem, utilizando exclusivamente plataformas de Nuvem.
+
+Para esse projeto, os servidores deverão ser migrados gradativamente para cloud, mantendo total suporte e funcionamento entre os ambientes atual e novo, além dos custos associados para o projeto.
+
+Dúvidas podem e devem ser tiradas por email ou em aula.
+
+
+4-	Quais os requisitos mínimos (MVP) para este projeto que você espera que seja entregue?
+
+A Rescia SA deseja receber nessa primeira etapa, os seguinte 'entregáveis':
+ - Apresentação da arquitetura
+ - Lista de serviços utilizados e motivos
+ - Custos mensal de nuvem 
+ - Estratégia de Continuidade de Negócio
+ - Vantagens da solução proposta vs atual
+ - Prova de Conceito
+
+
+Para o ambiente On-Premises temos:
+  - 4 servidores Windows;
+  - 3 servidores Linux;
+  - Par de firewalls para proteção e NAT 
+
+A consultoria deverá estimar o custo do projeto, além definir o que precisará ser mantido On-Premises, lembrando que o máximo de recurso possível deverá ser migrado para AWS.
+
+
+5-	Quais os requisitos que você considera que iriam além do esperado? (grupos de 4 a 6 alunos)
+
+O foco principal é a migração, mas melhorias podem ser implementadas, se custo e prazo não forem comprometidos;
+
+A criatividade fará parte das oportunidades envoltas com este projeto, portanto, não se limite em fornecer ideias/sugestões tecnológicas que o enriqueçam. 
+
+
+6-	Fora de Escopo (O que esse projeto não contém?)
+
+ - A migração própriamente dita do ambiente 
+ - Custo de serviço para implantação da solução
+
+
+7-	Qual é a entrega (s) final do projeto?
+
+ - Apresentação de 15 minutos com os requisitos 
+ - PoC demonstrando o conceito 
+ - Garantir o domínio e entendimento dos componentes definidos e o os motivos 
+
+
+8-	Time (quem são os membros do time? Nome da pessoa da empresa que fará a mentoria do projeto
+
+Flávio Rescia Dias – flavio.rescia@darede.com.br
