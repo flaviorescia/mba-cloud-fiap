@@ -5,8 +5,12 @@ aws configure --profile fiap-bra
 export set AWS_PROFILE=fiap-bra
 
 #Criando instância EC2
-aws ec2 run-instances --image-id ami-0800f9916b7655289 --instance-type t3.micro --key-name test --security-group-ids sg-0f6360c5e74b1cae3 --subnet-id subnet-0ba3506dcc9f73f9b
---count 1 
+aws ec2 run-instances --image-id ami-0800f9916b7655289 \
+--instance-type t3.micro \
+--key-name test \
+--security-group-ids sg-0f6360c5e74b1cae3 \
+--subnet-id subnet-0ba3506dcc9f73f9b \
+--count 5
 
 #Logando Amazon Linux
 ssh ec2-user@ip_instancia -i key.pem
@@ -14,8 +18,14 @@ ssh ec2-user@ip_instancia -i key.pem
 #Instalando MySQL Client
 sudo yum install mysql
 
+#Terminando um instances ec2 CUIDADOOOOOO!
+aws --profile fiap-bra ec2 terminate-instances --instance-id i-0ade0b08d20af3f1f
+
+#Acessando instancia linux via Windows
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+
 # Exemplo de criação de uma base de dados
-CREATE TABLE IF NOT EXISTS tasks (q
+CREATE TABLE IF NOT EXISTS tasks (
     task_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     start_date DATE,
