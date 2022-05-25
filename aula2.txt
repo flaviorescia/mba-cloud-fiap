@@ -1,0 +1,37 @@
+#Acesse sua conta colocando Account > User > Password de acordo com a planilha
+
+#Vamos configurar o MFA
+Services > IAM > 'Selecione seu usuário' > "Security Credentials" > "Assigned MFA device" > "Virtual MFA device" > 
+
+#Baixe o Google Authenticator
+Add with QR Code > 'Scanei 2x
+
+#Agora teste fazendo o logoff na console da AWS e login novamente, será solicitado o código do MFA 
+
+#Crie 3 Grupos
+ - DesenvolvedoresNomeSobrenome: Acesso somente de leitura em tudo
+ - AdminsNomeSobrenome: Acesso total
+ - EC2UsersNomeSobrenome: Acesso somente no serviço EC2 (Computação/VMs)
+
+#Crie um usuário em cada grupo
+ - dev-nome-sobrenome
+ - admin-nome-sobrenome
+ - ec2-nome-sobrenome
+
+#Crie uma senha de console para cada usuário
+
+#Em outro browser, logue na console com o usuário 'EC2UsersNomeSobrenome' e tente criar um bucket s3.
+Services > S3 > "Create Bucket" > 'Escolha um nome unico' > 'Deixe todas as opções default' > 'Create'
+#Você não deverá conseguir
+
+#Agora crie um EC2 (configurações padrões), instância t3.micro
+Services > EC2 > Instances > Launch Instance > Mude o "Type" > "Launche Instance"
+
+#Deslogue e logue com o usuário DesenvolvedoresNomeSobrenome e tente criar um ec2, você não deverá conseguir. Tente também "terminar" o ec2 também não deve conseguir
+Services > EC2 > Instances > 'Launch Instance' > Mude "Name" para ec2-nome-sobrenome > 'Mude o "Type" para t2.micro' > 'Em "Key Pair" mude o para "Proceed without key pair" > "Launche Instance"
+'Selecione a instância' > 'Instance State' > 'Terminate Instance' > Confime 
+
+#Logue com o usuário AdminsNomeSobrenome, e tente criar um bucket s3, e tente terminar a instancia 
+
+#Não esqueça de deletar o bucket s3 e todos os recursos criados antes de terminar o laboratório 
+#Fique a vontade para fazer mais testes limitando serviços subserviços, com policies AWS "AWS Managed Policy" ou policies customizadas "Custom Policy"
