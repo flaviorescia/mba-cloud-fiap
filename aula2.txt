@@ -1,3 +1,5 @@
+#Exercício de criação de usuários, grupos e contas no IAM e validação:
+
 #Acesse sua conta colocando Account > User > Password de acordo com a planilha
 
 #Vamos configurar o MFA
