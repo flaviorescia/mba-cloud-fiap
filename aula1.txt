@@ -1,3 +1,10 @@
+#Crie um usuário no IAM
+Services > IAM > Users > Add
+
+#Selecione para criar apenas programatic access 
+
+#Associte diretamente a role AdministratorFull (não recomendado para produção)
+
 #Configurando o AWSCLI
 aws configure --profile fiap-bra
 
@@ -12,19 +19,33 @@ aws ec2 run-instances --image-id ami-0800f9916b7655289 \
 --subnet-id subnet-0ba3506dcc9f73f9b \
 --count 5
 
+#Acessando instancia linux via Windows
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+
 #Logando Amazon Linux
 ssh ec2-user@ip_instancia -i key.pem
+
+#Vamos criar um RDS, 
+Services > IAM > Users > Add > MySQL > Atributos
+Type: t3.micro 
+Public Access: No
+SecurityGroup: Default 
+Usuário: admin
+Senha: Crie uma
 
 #Instalando MySQL Client
 sudo yum install mysql
 
-#Terminando um instances ec2 CUIDADOOOOOO!
-aws --profile fiap-bra ec2 terminate-instances --instance-id i-0ade0b08d20af3f1f
-
-#Acessando instancia linux via Windows
-https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
+#Acesso o RDS MySQL para testar 
+mysql -u admin -h 'endpoint do RDS' -p
 
 # Exemplo de criação de uma base de dados
+CREATE DATABASE teste;
+
+#Acesse o banco de dados
+USE teste;
+
+#Crie um tabela de teste
 CREATE TABLE IF NOT EXISTS tasks (
     task_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -35,3 +56,11 @@ CREATE TABLE IF NOT EXISTS tasks (
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )  ENGINE=INNODB;
+
+#Liste os campos da tabela 
+DESC tasks;
+
+#Terminando um instances ec2 CUIDADOOOOOO!
+aws --profile fiap-bra ec2 terminate-instances --instance-id i-0ade0b08d20af3f1f
+
+#Não esqueça de terminar o RDS, e não mantenha snapshot nenhum para evitar custos desnecessários
