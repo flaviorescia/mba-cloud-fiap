@@ -12,7 +12,7 @@ Add with QR Code > 'Scanei 2x
 
 #Crie 3 Grupos
  - DesenvolvedoresNomeSobrenome: Acesso somente de leitura em tudo [ReadOnlyAccess]
- - AdminsNomeSobrenome: Acesso total [AdministratorFull]
+ - AdminsNomeSobrenome: Acesso total [AdministratorAccess]
  - EC2UsersNomeSobrenome: Acesso somente no serviço EC2 (Computação/VMs) [AmazonEC2FullAccess]
 
 #Crie um usuário em cada grupo
