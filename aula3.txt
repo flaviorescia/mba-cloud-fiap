@@ -1,0 +1,38 @@
+# Já existe um site rodando a aplicação do site da LEOPARD Bike, e uma campanha muito importante irá acontecer e será preciso uma estratégia multicloud ativo/standby e que poderá ser migrada para ativo/ativo manualmente caso necessário 
+
+# Os site está rodando na Azure, e vamos fazer o deploy na AWS, e garantir que em caso de falhas do site na Azure seja chaveado automaticamente para AWS. 
+
+# Primeiro vamos subir o site na AWS
+# Crie uma instância EC2 com na VPC default, com acesso na rede pública, e vamos adicionar o script abaixo para instalar o servidor de páginas web :
+
+#!/bin/bash -xe
+echo "Iniciando UserData"
+yum -y update
+yum -y install httpd git
+amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2
+systemctl start httpd
+systemctl enable httpd
+git clone https://github.com/ritwickdey/simple-bike-shopping-site.git
+cp simple-bike-shopping-site/* /var/www/html/ -fR
+usermod -a -G apache ec2-user
+chown -R ec2-user:apache /var/www
+chmod 2775 /var/www
+sed -i 's/Leopard/Leopard2/g' /var/www/html/index.html
+
+#Garantar que o Security Group está com a porta HTTP aberta
+
+#Crie um HealthCheck para validar quando o servidor da Azure está fora 
+Services > Route53 > 'Create health check' > Escolha um nome > 'Endpoint' > em IP '20.248.182.61' > Next > 'Create alarm'
+
+#Agora vamos criar uma zona DNS, é via DNS que iremos fazer o failover
+Services > Route53 > 'Hosted Zones' > 'Created Hosted Zone' > em 'Domain Name:' grpX.rescia.com.br > Public Zone > Create hostes
+
+#Passe os servidores DNS para o professor cadastrar 
+
+#Agora cadastre sua entra DNS apontando para o servidor primário na Azure 20.248.182.61
+Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=20.248.182.61' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Primary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-1'
+
+#Agora vamos criar a entrada secundária apontando para a AWS 
+Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=IP-SEU-EC2' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Secondary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-2'
+
+#Para testar, pode trocar o IP do HealthCheck, ou aguardar o professor derrubar o servidor na Azure 
