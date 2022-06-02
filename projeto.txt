@@ -58,5 +58,37 @@ A criatividade fará parte das oportunidades envoltas com este projeto, portanto
 
 8-	Time (quem são os membros do time? Nome da pessoa da empresa que fará a mentoria do projeto
 
+
+9- Data da apresentação
+1CLBRA: 22/Junho 
+2CLBRA: 23/Junho
+
+
+Perguntas que já fizeram e status: 
+
+P: Tem Orçamento
+R: Sim, checando o budget limite que temos com o financeiro, reponderemos ainda essa semana
+
+P: Quais  serviços que rodam nos servidores
+R: Pedi para o Zé me mandar a lista atualizada do que roda em cada servidor e mando ainda essa semana
+
+P: Existe prazo para migrar o ambiente
+R: Sim, a migração não poderá passar de 1 mês, e teremos apenas 2 janelas de 1 hora para parada
+
+P: Qual compromisso em prazo com o custo vocês podem ter?
+R: 5 anos - E nosso orçamento é anual
+
+P: Tem alguma arquitetura AS IS do On Premise?
+R: Temos sim, mas está desatualizada, pedi para o João atualizar e assim que receber te mando
+
+P: Quantos colaboradores a empresa tem? 
+R: Pedi a lista para o RH e envio assim que receber
+
+P: Media de acesso nos site institucional
+R: Pessoa checou no Google Analytics, e quando tem evento chega a 2000 pessoas conectadas, mas tirando isso, é 10 ou 20.
+
+
+Dúvida enviem para:
+
 Flávio Rescia Dias – flavio.rescia@darede.com.br
 Gustavo Lima - gustavo.lima@darede.com.br
