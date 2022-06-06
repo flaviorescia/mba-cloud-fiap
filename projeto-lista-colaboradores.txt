@@ -1,0 +1,8 @@
+Por medidas de segurança, e devido a politicas de LGPD os usuários não podem ser passados, assim segue um resumo dos departamentos e quantidade de usuários:
+
+Administrativo e Backoffice: 8 funcionários
+Desenvolvedores: 3 funcionários
+Diretoria: 4 funcionarios 
+Operação: 95 funcionarios 
+TI: 3 funcionarios
+Terceiros: 450 colaboradores 

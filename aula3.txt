@@ -36,3 +36,5 @@ Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain
 Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=IP-SEU-EC2' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Secondary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-2'
 
 #Para testar, pode trocar o IP do HealthCheck, ou aguardar o professor derrubar o servidor na Azure 
+
+#Não esqueçam de desligar os recursos, e apagar o HealthCheck (há um custo por ele mensal)

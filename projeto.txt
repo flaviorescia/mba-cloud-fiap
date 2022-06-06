@@ -68,9 +68,11 @@ Perguntas que já fizeram e status:
 
 P: Tem Orçamento
 R: Sim, checando o budget limite que temos com o financeiro, reponderemos ainda essa semana
+R: O CIO passou um custo máximo de 2750/mês com a conta da nuvem 
 
 P: Quais  serviços que rodam nos servidores
 R: Pedi para o Zé me mandar a lista atualizada do que roda em cada servidor e mando ainda essa semana
+R: Arquivo disponível: projeto-inventario-servidores.xlsx
 
 P: Existe prazo para migrar o ambiente
 R: Sim, a migração não poderá passar de 1 mês, e teremos apenas 2 janelas de 1 hora para parada
@@ -80,9 +82,11 @@ R: 5 anos - E nosso orçamento é anual
 
 P: Tem alguma arquitetura AS IS do On Premise?
 R: Temos sim, mas está desatualizada, pedi para o João atualizar e assim que receber te mando
+R: Arquivo disponível: projeto-arquitetura.jpg
 
 P: Quantos colaboradores a empresa tem? 
 R: Pedi a lista para o RH e envio assim que receber
+R: Arquivo disponível: projeto-lista-colaboradores.txt
 
 P: Media de acesso nos site institucional
 R: Pessoa checou no Google Analytics, e quando tem evento chega a 2000 pessoas conectadas, mas tirando isso, é 10 ou 20.
