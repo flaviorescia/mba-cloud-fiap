@@ -33,7 +33,7 @@ Para o ambiente On-Premises temos:
   - 3 servidores Linux;
   - Par de firewalls para proteção e NAT 
 
-A consultoria deverá estimar o custo do projeto, além definir o que precisará ser mantido On-Premises, lembrando que o máximo de recurso possível deverá ser migrado para AWS.
+A consultoria deverá estimar o custo do projeto, além definir o que precisará ser mantido On-Premises, lembrando que o máximo de recurso possível deverá ser migrado para nuvem.
 
 
 5-	Quais os requisitos que você considera que iriam além do esperado? (grupos de 4 a 6 alunos)
