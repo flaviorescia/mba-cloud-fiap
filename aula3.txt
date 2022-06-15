@@ -22,15 +22,15 @@ sed -i 's/Leopard/Leopard2/g' /var/www/html/index.html
 #Garantar que o Security Group está com a porta HTTP aberta
 
 #Crie um HealthCheck para validar quando o servidor da Azure está fora 
-Services > Route53 > 'Create health check' > Escolha um nome > 'Endpoint' > em IP '20.248.182.61' > Next > 'Create alarm'
+Services > Route53 > 'Create health check' > Escolha um nome > 'Endpoint' > em IP '20.5.116.71' > Next > 'Create alarm'
 
 #Agora vamos criar uma zona DNS, é via DNS que iremos fazer o failover
-Services > Route53 > 'Hosted Zones' > 'Created Hosted Zone' > em 'Domain Name:' grpX.rescia.com.br > Public Zone > Create hostes
+Services > Route53 > 'Hosted Zones' > 'Created Hosted Zone' > em 'Domain Name:' braX-grpZ-Y.rescia.com.br > Public Zone > Create hostes
 
 #Passe os servidores DNS para o professor cadastrar 
 
-#Agora cadastre sua entra DNS apontando para o servidor primário na Azure 20.248.182.61
-Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=20.248.182.61' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Primary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-1'
+#Agora cadastre sua entra DNS apontando para o servidor primário na Azure 20.5.116.71
+Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=20.5.116.71' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Primary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-1'
 
 #Agora vamos criar a entrada secundária apontando para a AWS 
 Services > Route53 > 'Hosted Zones' > grpX.rescia.com.br > "Mantenha o subdomain vazio" > 'Record Type = A' > 'Value=IP-SEU-EC2' > 'TTL=10' > 'Routiong Policy = Failover' > 'Failover record type = Secondary' > Selecione 'Health check ID' criado > 'Record ID = LEOPARD-2'
