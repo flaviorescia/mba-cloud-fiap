@@ -72,4 +72,5 @@
     Agora você está logado no pod/container
 
 
-
+Links Úteis:
+cloud.google.com/products/calculator
