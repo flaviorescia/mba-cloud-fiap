@@ -1,0 +1,75 @@
+#Primeiro passe seu email de uma conta Google que tenha acesso no chat do Zoom 
+
+#Você deve ter recebido um email para aceitar o acesso ao projeto 
+    Clique no link de aceite do email
+    Clique no botão "Accept" 
+
+#Agora logue na console do GCP em: 
+    console.cloud.google.com
+
+#Agora vamos criar um cluster de Kubernetes gerenciado do Google (GKE)
+    Busca > "Kubernetes Engine" 
+
+#No serviço do GKE, vamos clicar em "Add Cluster", e preencher os campos abaixo 
+    Clusters > Create
+    Name = nome-sobrenome
+    Region = us-central1
+    Outras opções deixar padrão 
+    ...
+    "Create"
+    "Standard mode" (Note que existe também o Autopilot, que funcionar de forma serverles, e o GCP cuida de tudo para nós)
+    "Regional" 
+    "Specify default node locations" 
+    us-central1-a
+    us-central1-b
+
+#Agora no menu a esquerda, vamos configurar o "Node Group": 
+    Selecione no Node Grou "default-pool"
+        "Number of nodes (per zone)" = 1
+        "Minimum number of nodes (per zone)" = 1 
+        "Maximum number of nodes (per zone)" = 2 
+        Selecione "Specify node locations" 
+        us-central1-a
+        us-central1-b 
+
+    Agora em "Nodes", vamos configurar os valores abaixo: 
+        "Machine type" = e2.micro 
+        "Boot disk size (GB)" = 50
+        Habilite "Enable nodes on spot VMs"
+    Create 
+
+#Agora vamos esperar alguns minutos até o cluster ser criado 
+
+#Vamos agora criar um deployment de pods baseado no nginx
+    "Kubernetes Engine" > Workloads > Deploy 
+    Clique em "View YAML" para ver como fica o código
+    Deploy 
+
+#Agora vamos expor nosso pod via Load Balancer
+    "Kubernetes Engine" > Workloads > nginx-1 
+    Expose 
+    Mantenha tudo padrão e de uma olhada no YAML
+    Expose 
+
+#Após criado, você conseguirá ver o service em:
+    "Services & Ingress""
+    Selecione o Service criado 
+    Encontre o Endpoint 
+    Basta coloca-lo no browser para acessar a aplicação 
+
+#Agora vamos acessar o cluster via cli (kubectl)
+    Clusters > clique no seu cluster 
+    Connect > "RUN CLOUD SHELL" > Confirme se solicitado
+    Enter (para confirmar o comando kubectl)
+
+#Agora o kubectl está configurado, rode os comendos abaixo para analisar o resultado 
+    kubectl get ns 
+    kubectl create ns ns-teste 
+    kubectl get ns
+    kubectl get pods 
+    kubectl logs [id-pod]
+    kubectl exec -ti [id-pod] bash
+    Agora você está logado no pod/container
+
+
+
