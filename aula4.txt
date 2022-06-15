@@ -1,87 +1,108 @@
-#Familiarização com a conta do Azure
-#Exercício de acesso a conta Azure, criação e acesso de Desktops Virtuais - AVD/VDI: 
+#Familiarização com a conta do Azure 
 
+#Exercício de acesso a conta Azure, criação e acesso de Desktops Virtuais - AVD/VDI:  
 
-#Acesse sua conta colocando Account > User > Password de acordo com a planilha: 
-Obs: Será solicitado a alteração da senha 
+#Acesse sua conta colocando Account > User > Password de acordo com a planilha:  
 
-# URL de acesso ao Azure: 
-https://portal.azure.com 
+Obs: Será solicitado a alteração da senha  
 
-#Vamos configurar o MFA em Search, digite:  
-Azure Active Directory > Users > 'Selecione sua conta na caixa no canto esquerdo' > Per-user multifactor authentication > Em 'Search' digite a sua conta > 'Selecione sua conta na caixa no canto esquerdo' > Enable 
+# URL de acesso ao Azure:  
 
-#Agora faça logoff do portal, baixe o Microsoft Authenticator e realize o login novamente 
-Na tela que irá abrir após o login, siga o seguinte caminho: 
+https://portal.azure.com  
 
-Next > Next > Scanei o QR code > Next > Aprovar entrada no aplicativo (dispositivo móvel) > 
-Insira o seu número > Next > Insira o código que foi enviado ao seu número > Next > Done 
+#Vamos configurar o MFA em Search, digite:   
+    Azure Active Directory > Users > 'Selecione sua conta na caixa no canto esquerdo' > Per-user multifactor authentication > Em 'Search' digite a sua conta > 'Selecione sua conta na caixa no canto esquerdo' > Enable  
 
-#Acesse o serviço Azure Virtual Desktop  
-No canto esquerdo, clique em Host pools > Create e preencha com as informações abaixo: 
-    Subscription: Sub-Card 
-    Resource Group: FIAP-BRA1 
-    Host pool name: nome+sobrenome 
-    Location: North Europe 
-    Validation environment: Yes 
-    Host pool type: Pooled 
-    Load balancing algoritm: Breadh-first 
-    Max session limit: 1 
+#Agora faça logoff do portal, baixe o Microsoft Authenticator e realize o login novamente  
+
+#Na tela que irá abrir após o login, siga o seguinte caminho:  
+    Next > Next > Scanei o QR code > Next > Aprovar entrada no aplicativo (dispositivo móvel) >  
+    Insira o seu número > Next > Insira o código que foi enviado ao seu número > Next > Done  
+
+#Os passos citados anteriormente, foram apresentados na última aula. 
+
+#Acesse o serviço Azure Virtual Desktop   
+
+#No canto esquerdo, clique em Host pools > Create e preencha com as informações abaixo:  
+    Subscription: Sub-Card (5d55b0c7-f07b-4928-affa-609f181c2848) 
+    Resource Group: FIAP-BRA1  
+    Host pool name: nome+sobrenome  
+    Location: North Europe  
+    Validation environment: Yes  
+    Host pool type: Pooled  
+    Load balancing algoritm: Breadh-first  
+    Max session limit: 1  
+
+#Next: Virtual Machines  
+    Add Azure Virtual machines: No 
+
+ #Após isso, selecione Next: Workspace  
+    Register desktop app group: Yes  
+    To This workspace:  nome+sobrenome   
+
+#Avance para próxima tela 
+Advanced > Next: tags > Next:Review + create > Create  
+
+#Aguarde o provisionamento dos recursos criados, pode levar até 15 minutos  
+
+#No canto esquerdo, selecione 'Application groups' > "selecione o application group com o seu nome+sobrenome" > Assignments > +Add > "Adicione seu usuário" 
+#Configurar propriedades do RDP - Importante 
+     Para que seu pool de hosts saiba que o Host de Sessão no pool de hosts é associado ao AAD, 
+     você precisa adicionar uma propriedade RDP avançada. 
+     Vá em Host pools > Selecione o seu Host pool > No canto esquerdo, clique em RDP Properties > 
+     Advanced > Cole o parametro no início do RDP Properties: targetisaadjoined:i:1; > Salve 
+
+#Agora vamos em Session hosts e criar a estrutura de VM: 
+    +Add > (As primeiras configurações são os detalhes do seu hostpool, então clique em Next) > 
+    Next: Virtual Machines 
+
+Resource Group: FIAP-BRA1  
+    Name prefix: VM+nome 
+    Virtual machine location: Australia East  
+    Availability options: No infrastructure redundancy required  
+    Security type: Standard   
+    Image Type: Gallery  
+    Image: Windows 10 Enterprise multi-session, Version 2004 + Microsoft 365 Apps  
+    Virtual machine size: Change size > B2s > Select  
+    Tipo para selecionar: b2s  
+    Number of VMs: 1  
+    OS disk type: Standard SSD  
+    Boot Diagnostics: Enable with managed storage account (recommended)  
+    Virtual Network: vnet-fiap-bra1  
+    Subnet: default  
+    Network security group: Basic  
+    Public inbound ports: No  
+    Select which directory you wold like to join: Azure Active Directory  
+    Enroll VM with Intune: No   
+
+#Usuário local do desktop AVD:  
+    Username: nome+sobrenome  
+    Password: individual  
+    Salve em um local seguro.  
  
-#Next: Virtual Machines 
-    Add Azure Virtual machines: Yes 
-    Resource Group: FIAP-BRA1 
-    Name prefix: VM-FIAP  
-    Virtual machine location: Australia East 
-    Availability options: No infrastructure redundancy required 
-    Security type: Standard  
-    Image Type: Gallery 
-    Image: Windows 11 Enterprise multi-session + Microsoft 365 Apps 
-    Virtual machine size: Change size > B1s >Select 
-    Tipo para selecionar: b1s 
-    Number of VMs: 1 
-    OS disk type: Standard SSD 
-    Boot Diagnostics: Enable with managed storage account (recommended) 
-    Virtual Network: vnet-fiap-bra1 
-    Subnet: default 
-    Network security group: Basic 
-    Public inbound ports: No 
-    Select which directory you wold like to join: Azure Active Directory 
-    Enroll VM with Intune: No 
+Em custom configuration, não será necessário inserir nenhuma informação. 
 
- 
+Next: Advanced > Next: Tags > Next: Review + create 
 
-Importante, logaremos com usuário local para teste: 
-    Username: nome+sobrenome 
-    Password: individual 
-    Salve em um local seguro. 
+#Aguarde o provisionamento dos recursos criados, pode levar até 25 minutos  
 
-#Após isso, selecione Next: Workspace 
-    Register desktop app group: Yes 
-    To This workspace:  nome+sobrenome 
+#Agora vamos acessar URL para acesso WEB:  
+https://client.wvd.microsoft.com/arm/webclient/index.html  
 
+#Preencha com as suas credenciais de login do Azure Portal  
 
-#Avance para próxima tela
-Advanced > Next: tags > Next:Review + create > Create 
+#Após logar, clique no nome do seu Desktop virtual e aguarde  
 
-#Aguarde o provisionamento dos recursos criados, pode levar até 30 minutos
-No canto esquerdo, selecione 'Application groups' > "selecione o application grupo com o seu nome+sobrenome" > Assignments > +Add > "Adicione seu usário"
+#Insira as credenciais de login do Azure Portal 
 
-#Agora vamos acessar URL para acesso WEB: 
-https://client.wvd.microsoft.com/arm/webclient/index.html 
+#Importante 
+Após o laboratório, vá em Azure Virtual Desktop > Application groups > Selecione o application group criado por você > Delete  
+Após isso, vá em host pool > Selecione o Host pool criado por você > Delete  
 
+  
 
-Preencha com as suas credenciais de login do Azure Portal 
-
-
-#Após logar, clique no nome do seu Desktop virtual e aguarde 
-#Insira as credenciais criadas anteriormente no passo-a-passo Azure Active Directory 
-Após o laboratório, vá em Azure Virtual Desktop > Application groups > Selecione o application group criado por você > Delete 
-Após isso, vá em host pool > Selecione o Host pool criado por você > Delete 
-
-Links uteis:
-https://azure.microsoft.com/pt-br/pricing/details/virtual-machines/windows/
-https://azure.microsoft.com/en-us/pricing/calculator/
-
-https://aws.amazon.com/pt/products/
-https://cloud.google.com/products
+Links uteis: 
+https://azure.microsoft.com/pt-br/pricing/details/virtual-machines/windows/ 
+https://azure.microsoft.com/en-us/pricing/calculator/ 
+https://aws.amazon.com/pt/products/ 
+https://cloud.google.com/products 
