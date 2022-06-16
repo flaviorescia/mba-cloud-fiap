@@ -91,6 +91,14 @@ R: Arquivo disponível: projeto-lista-colaboradores.txt
 P: Media de acesso nos site institucional
 R: Pessoa checou no Google Analytics, e quando tem evento chega a 2000 pessoas conectadas, mas tirando isso, é 10 ou 20.
 
+P: Horários de uso dos servidores 
+R: Todos são usados em horário comercial, apenas o Jenkins e Intranet pode ser desligado fora do horário
+
+P: O consumo da planilha é o necessário, ou é estão super dimensionado? 
+R: Consumo de pico está na planilha projeto-performance-servidores.xlsx
+
+P: O que é esperado da PoC 
+R: Apenas sentir segurança no conhecimento de vocês. Pode ser algo simples de 2~3 minutos
 
 Dúvida enviem para:
 
